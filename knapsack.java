@@ -81,3 +81,16 @@ item[i]=(int)temp;
 }
 }
 
+//*input: Enter the no. of objects:-
+//3
+//Enter the items, wts and profits of each object:-
+// 2 15 24
+// 3 10 15
+// 1 18 25
+//Enter the capacity of knapsack:-
+//20
+//The result vector is:-
+//Item 2:1.0
+//Item 3:0.5
+//Item 1:0.0
+//Maximum profit is:- 31.
