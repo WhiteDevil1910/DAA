@@ -1,0 +1,115 @@
+package mergesort;
+import java.util.*;
+public class mergesortA {
+	static int max=50000;
+	public static void mergesort(int a[],int low,int high)
+	{
+	 int mid;
+	 if(high>low)
+	 {
+	 mid=(low+high)/2;
+	 mergesort(a,low,mid);
+	 mergesort(a,mid+1,high);
+	 merge(a,low,mid,high);
+	 }
+	 }
+	public static void merge(int a[],int low,int mid,int high)
+	{
+	 int k=low,j=mid+1,i=low;
+	 int c[]=new int[1000];
+	 while((i<=mid)&&(j<=high))
+	 {
+	 if(a[i]<=a[j])
+	 {
+	 c[k]=a[i];
+	 i=i+1;
+	 }
+	 else
+	 {
+	 c[k]=a[j];
+	 j=j+1;
+	 }
+	 k=k+1;
+	}
+	while(i<=mid)
+	{
+	 c[k]=a[i];
+	 k=k+1;
+	 i=i+1;
+	}
+	while(j<=high)
+	{
+	 c[k]=a[j];
+	 k=k+1;
+	 j=j+1;
+	}
+	for(i=low;i<=high;i++)
+	a[i]=c[i];
+	}
+	public static void main(String args[] )
+	{
+	int n,i;
+	Scanner in=new Scanner(System.in);
+	Random rand=new Random();
+	System.out.println("MergeSort Test");
+	/* Accept no.of Elements */
+	System.out.println("\nEnter the number of elements");
+	n=in.nextInt();
+	/* create array of n elements */
+	int arr[]=new int[n];
+	try{
+	/* Generate Random Numbers */
+	for(i=0;i<n;i++)
+	arr[i]=rand.nextInt(100);
+	/* Print random numbers */
+	System.out.println("\nthe random elements are ");
+	for(i=0;i<n;i++)
+	System.out.println(arr[i]+" ");
+	long start_time=System.nanoTime();
+	/*call method merge Sort*/
+	mergesort(arr,0,n-1);
+	long end_time=System.nanoTime();
+	/* Print Sorted Array */
+	System.out.println("\nThe Elements After sorting");
+	for(i=0;i<n;i++)
+	System.out.println(arr[i]+" ");
+	long t=end_time - start_time;
+	System.out.println("Time taken for execution is:"+t+" nanoseconds");
+	}
+	catch(ArrayIndexOutOfBoundsException ae)
+	{
+	System.out.println("Array Index reached maximum ");
+	}
+	}
+	}
+/*
+MergeSort Test
+
+Enter the number of elements
+10
+
+the random elements are 
+68 
+34 
+89 
+92 
+56 
+14 
+93 
+57 
+67 
+76 
+
+The Elements After sorting
+14 
+34 
+56 
+57 
+67 
+68 
+76 
+89 
+92 
+93 
+Time taken for execution is:14300 nanoseconds
+*/
